@@ -1,5 +1,13 @@
-<h1>Bienvenido al Sistema de Productos</h1>
-<ul>
-    <li><a href="{% url 'listar_productos' %}">Listar Productos</a></li>
-    <li><a href="{% url 'crear_producto' %}">Crear Producto</a></li>
-</ul>
+{% extends 'myapp/base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="section">
+    <h4>Bienvenido al CRUD de Productos</h4>
+    <p>Usa el menú superior para crear, listar, editar o eliminar productos.</p>
+    <div class="row">
+        <a class="btn-large green col s12 m4 offset-m4" href="{% url 'crear_producto' %}">Agregar Producto</a>
+    </div>
+</div>
+{% endblock %}

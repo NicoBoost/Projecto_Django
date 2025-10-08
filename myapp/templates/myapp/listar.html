@@ -1,23 +1,32 @@
-<h1>Lista de Productos</h1>
-<a href="{% url 'crear_producto' %}">Agregar Nuevo Producto</a>
-<table border="1">
-<tr>
-    <th>ID</th>
-    <th>Nombre</th>
-    <th>Marca</th>
-    <th>Precio</th>
-    <th>Acciones</th>
-</tr>
-{% for producto in productos %}
-<tr>
-    <td>{{ producto.id }}</td>
-    <td>{{ producto.nombre }}</td>
-    <td>{{ producto.marca }}</td>
-    <td>{{ producto.precio }}</td>
-    <td>
-        <a href="{% url 'editar_producto' producto.id %}">Editar</a>
-        <a href="{% url 'eliminar_producto' producto.id %}">Eliminar</a>
-    </td>
-</tr>
-{% endfor %}
+{% extends 'myapp/base.html' %}
+
+{% block title %}Lista de Productos{% endblock %}
+
+{% block content %}
+<h5>Productos Registrados</h5>
+<table class="highlight responsive-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.marca }}</td>
+            <td>${{ producto.precio|floatformat:0 }}</td>
+            <td>
+                <a class="btn-small blue" href="{% url 'editar_producto' producto.id %}">Editar</a>
+                <a class="btn-small red" href="{% url 'eliminar_producto' producto.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
+{% endblock %}
