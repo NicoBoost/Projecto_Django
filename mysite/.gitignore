@@ -16,3 +16,10 @@ Users\
 Nico\
 Desktop\
 djangoproject
+
+*.pyc
+__pycache__/
+db.sqlite3
+env/
+*.env
+/staticfiles/
