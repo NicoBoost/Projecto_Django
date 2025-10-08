@@ -18,10 +18,25 @@
         <div class="input-field">
             {{ form.precio.label_tag }}
             <input type="number" name="precio" id="id_precio"
-           value="{{ form.precio.value|floatformat:0 }}" step="1" min="0">
+                value="{{ form.precio.value|floatformat:0 }}"
+                step="100" min="0">
         </div>
         <button type="submit" class="btn green">Actualizar</button>
         <a href="{% url 'listar_productos' %}" class="btn grey">Cancelar</a>
     </form>
 </div>
+
+<script>
+    const precioInput = document.getElementById('id_precio');
+    precioInput.addEventListener('wheel', function(e) {
+        e.preventDefault(); // evita que la página haga scroll
+        let step = parseInt(this.step) || 1;
+        let current = parseInt(this.value) || 0;
+        if (e.deltaY < 0) { // scroll hacia arriba
+            this.value = current + step;
+        } else { // scroll hacia abajo
+            this.value = Math.max(0, current - step); // evita negativos
+        }
+    });
+</script>
 {% endblock %}
