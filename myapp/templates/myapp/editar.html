@@ -17,7 +17,8 @@
         </div>
         <div class="input-field">
             {{ form.precio.label_tag }}
-            {{ form.precio }}
+            <input type="number" name="precio" id="id_precio"
+           value="{{ form.precio.value|floatformat:0 }}" step="1" min="0">
         </div>
         <button type="submit" class="btn green">Actualizar</button>
         <a href="{% url 'listar_productos' %}" class="btn grey">Cancelar</a>
